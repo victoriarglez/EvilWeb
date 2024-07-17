@@ -1,0 +1,78 @@
+@keyframes fillcircle {
+    0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+    25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+    50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+    75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+    100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+}
+
+@keyframes checkmark {
+    from {
+        transform: scale(.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.checkmark-circle {
+    width: 100px;
+    height: 100px;
+    display: block;
+    position: relative;
+    left: 35%;
+}
+
+.checkmark-circle-active > div {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+}
+
+.checkmark-circle-active > .circle-area {
+    border: 3px solid rgb(109, 132, 209);
+    border-radius: 50%;
+    transform: rotate(45deg);
+    animation: fillcircle .5s linear;
+}
+
+.checkmark-circle-active > .static-area {
+    border: 3px solid rgba(255, 255, 255, 0);
+    border-radius: 50%;
+    box-shadow: inset 0 0 1px rgba(20, 25, 39, 0.5);
+}
+
+.checkmark-circle-active > .checkmark-area {
+    border: 3px solid rgba(255, 255, 255, 0);
+    opacity: 0;
+    animation: checkmark .5s ease-out .5s;
+    animation-fill-mode: forwards;
+}
+
+.checkmark-circle-active > .checkmark-area::after {
+    content: "";
+    position: absolute;
+    top: 58%;
+    left: 21%;
+    width: 25%;
+    height: 2.8%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color:rgb(60, 196, 60);
+    transform: rotate(50deg);
+}
+
+.checkmark-circle-active > .checkmark-area::before {
+    content: "";
+    position: absolute;
+    top: 49.85%;
+    left: 32.7%;
+    width: 50%;
+    height: 2.8%;
+    border-radius: 10px;
+    background-color: rgb(60, 196, 60);
+    transform: rotate(-45deg);
+}

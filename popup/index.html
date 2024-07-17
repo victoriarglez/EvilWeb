@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+    <head>
+        <meta charset="utf-8">
+        <title>Evil Web Popup</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/mdi/css/materialdesignicons.min.css">
+        <link rel="stylesheet" href="css/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="css/switch-element.css">
+        <link rel="stylesheet" href="css/checkmark.css">
+        <link rel="stylesheet" href="css/index.css">
+    </head>
+    <body style="background-color: #141212;">
+
+        <!-- Main page of the pop up -->
+        <div class="ew-navigation ew-active" id="pageHome">
+
+            <!-- Header -->
+            <div class="container text-center mt-5 mb-5">
+                <h1 style="font-family: 'Rubik Mono One';color:#E32636">Evil Web</h1>
+            </div>
+    
+            <!-- Switch that controls the script of the extension -->
+            <div class="container text-center mb-5">
+                <div class="row">
+                    <div class="col-4">
+                    </div>
+                    <div class="col-4">
+                        <div class="switch">
+                            <input class="switch-input" type="checkbox" id="switchColor">
+                            <div class="switch-is-on" style="font-size: 27px;"><span class="mdi mdi-emoticon-happy"></span></i></div>
+                            <div class="switch-is-off" style="font-size: 25px;"><span class="mdi mdi-emoticon-devil"></span></i></div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Buttons to display the lists -->
+            <div class="container text-center mb-5">
+                <div class="d-grid gap-3">
+                    <button type="button" class="btn btn-outline-light btn-lg ew-view-list" id="whiteBtn">While List</button>
+                    <button type="button" class="btn btn-outline-light btn-lg ew-view-list" id="blackBtn">Black List</button>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer>
+                <hr>
+                <small>
+                    <a href="#" target="_blank">About the extension</a>
+                    <a href="#" target="_blank">About the author</a>
+                    <a href="#" target="_blank">Donate</a>
+                </small>
+            </footer>
+
+        </div>
+        
+        <!-- Page to view a list -->
+        <div class="ew-navigation" id="pageViewList">
+
+            <button type="button" class="btn btn-large pt-4" id="goBackFromViewList"><i class="bi bi-chevron-left"></i></button>
+
+            <hr>
+
+            <!-- Header -->
+            <div class="container text-center mt-5 mb-5">
+                <h1 style="font-family: 'Rubik Mono One';color:#E32636" id="headerViewListTitle"></h1>
+            </div>
+
+            <!-- Actions for the list (add or clear) -->
+            <div class="container text-center mb-5">
+                <button type="button" class="btn btn-outline-info ew-add-to-list" data-bs-list="">Add</button>
+                <button type="button" class="btn btn-outline-danger ew-clear-list" data-bs-list="" data-bs-toggle="modal" data-bs-target="#clearListModal">Clear</button>
+            </div>
+
+            <!-- Items in the list -->
+            <div class="container mb-5" id="viewListContainer">
+            </div>
+
+            <!-- Footer -->
+            <footer>
+                <hr>
+                <small>
+                    <a class="" href="#" target="_blank">About the extension</a>
+                    <a class="" href="#" target="_blank">About the author</a>
+                    <a class="" href="#" target="_blank">Donate</a>
+                </small>
+            </footer>
+
+        </div>
+
+        <!-- Page to add item to list -->
+        <div class="ew-navigation" id="pageAddList">
+
+            <!-- Go back button -->
+            <button type="button" class="btn btn-large pt-4" id="goBackFromAddList"><i class="bi bi-chevron-left"></i></button>
+
+            <hr>
+
+            <!-- Header -->
+            <div class="container text-center mt-5 mb-5">
+                <h1>Add to <span id="headerAddListTitle"></span></h1>
+            </div>
+
+            <!-- Form to add element to the list -->
+            <div class="container mb-5">
+                <input type="hidden" class="form-control" id="listNameAdd">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="siteUrlAdd">
+                    <label for="siteUrl">URL</label>
+                </div>
+                <!--div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="setExpirationTime">
+                    <label class="form-check-label" for="setExpirationTime">Set expiration date</label>
+                </div>
+                <div class="row mt-3">
+                    <label for="siteExpiration" class="col-sm-2 col-form-label">Expires</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control" id="siteExpiration">
+                    </div>
+                </div-->
+                <div class="mt-5 text-center">
+                    <button type="button" class="btn btn-outline-danger" id="cancelAddList">Cancel</button>
+                    <button type="button" class="btn btn-outline-success" id="addItemToList">Add</button>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer>
+                <hr>
+                <small>
+                    <a class="" href="#" target="_blank">About the extension</a>
+                    <a class="" href="#" target="_blank">About the author</a>
+                    <a class="" href="#" target="_blank">Donate</a>
+                </small>
+            </footer>
+
+        </div>
+
+        <!-- Clear List Modal -->
+        <div class="modal fade" tabindex="-1" id="clearListModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title">Clear <span id="clearListHeaderModal"></span></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to clear the <span id="clearListBodyModal"></span>?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger">Yes</button>
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit list item modal -->
+        <div class="modal fade" tabindex="-1" id="editListItemModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title">Edit <span id="editListItemHeaderModal"></span></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-floating mb-3">
+                            <input type="hidden" class="form-control" id="siteIdEditModal" placeholder="">
+                            <input type="text" class="form-control" id="siteUrlEditModal" placeholder="">
+                            <label for="siteUrl">URL</label>
+                        </div>
+                        <div class="form-floating">
+                            <select class="form-select" id="selectListEditModal">
+                                <option value="white">White list</option>
+                                <option value="black">Black list</option>
+                            </select>
+                            <label for="selectList">Change from list</label>
+                        </div>
+                        <!-- Input to add expration date -->
+                        <!-- Feature not currently supported -->
+                        <!--div class="row mt-3">
+                            <label for="siteExpiration" class="col-sm-2 col-form-label">Expires</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" id="siteExpirationEditModal">
+                            </div>
+                        </div-->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" aria-label="Close" id="cancelBtnEditModal">Cancel</button>
+                        <button type="button" class="btn btn-outline-warning" id="updateBtnEditModal">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Remove list item modal -->
+        <div class="modal fade" tabindex="-1" id="removeListItemModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Remove <span id="removeListItemHeaderModal"></span></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" class="form-control" id="removeListItemIdBodyModal" placeholder="">
+                        <p>Are you sure you want to remove <span id="removeListItemBodyModal"></span> from the list?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" id="removeListItemConfirm">Yes</button>
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Confirm input added modal -->
+        <div class="modal fade" tabindex="-1" id="confirmInputModal">
+            <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="checkmark-circle" id="confirmInputAnimationModal">
+                        <div class="circle-area"></div>
+                        <div class="checkmark-area"></div>
+                        <div class="static-area"></div>
+                    </div>
+                    <br>
+                    <h1>Done!</h1>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="position-fixed end-0 bottom-0" id="toastPlaceHolder"></div>
+
+        <!-- Scripts used for the site -->
+        <script src="js/jquery-3.7.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/constans.js"></script>
+        <script src="js/switch-element.js"></script>
+        <script src="js/bs-handler.js"></script>
+        <script src="js/Website.js"></script>
+        <script src="js/storage-hdl.js"></script>
+        <script src="js/EvilWeb.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>

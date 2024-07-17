@@ -1,0 +1,88 @@
+.switch {
+    cursor:pointer;
+    width: 70px;
+    height: 40px;
+    position: relative;
+    color: white;
+    border-style: solid;
+    border-width: 5px;
+    border-color: white;
+    border-radius: 50px;
+    background-color: #5072A7;
+    box-shadow: inset 0 0 2px #b3b3b3;
+    transition: background-color .5s ease-in-out;
+}
+
+.switch::before {
+    content:'';
+    height: calc(100%);
+    aspect-ratio: 1/1;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: calc(100% - 30px);
+    border-radius:50px;
+    border: 1px solid #dcdcdc;
+    background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+    background-color:#ffffff;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+    transition: all .5s ease-in-out;
+}
+
+.switch:hover::before {
+    border-radius:50px;
+    border: 1px solid #dcdcdc;
+    background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+    background-color:#f6f6f6;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+    transition: all .5s ease-in-out;
+}
+
+.switch:has(input:checked) {
+    background-color: #B31B1B;
+    transition: background-color .5s ease-in-out;
+}
+
+.switch:has(input:checked)::before {
+    left: 0;
+    transition: all .5s ease-in-out;
+}
+
+.switch > input.switch-input {
+    display: none;
+}
+
+.switch > .switch-is-on {
+    user-select: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    width: 30px;
+    height: inherit;
+    line-height: 28px;
+}
+
+.switch > .switch-is-off {
+    user-select: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    width: 30px;
+    height: inherit;
+    line-height: 28px;
+}
+
+.switch:has(input:disabled) {
+    cursor:not-allowed;
+    color: #989e9e;
+    background-color: #606264;
+    border-color: rgb(114, 112, 112);
+}
+
+.switch:has(input:disabled)::before {
+    border: 1px solid #54585a;
+    background:linear-gradient(to bottom, #9ea2a3 5%, #7e8081 100%);
+    box-shadow:inset 0px 1px 0px 0px #e3e5e6;
+}

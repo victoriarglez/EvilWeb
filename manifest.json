@@ -1,0 +1,32 @@
+{
+    "manifest_version": 3,
+    "name": "Evil Web",
+    "description": "Extension to turn wbesites evil (colors become the negative).",
+    "version": "0.0.1",
+    "icons": {
+        "16": "img/icon16.png",
+        "32": "img/icon32.png",
+        "48": "img/icon48.png",
+        "128": "img/icon128.png"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup/index.html"
+    },
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "js": [
+            "popup/js/jquery-3.7.1.min.js",
+            "script.js"
+        ],
+        "all_frames": true,
+        "run_at": "document_end"
+    }],
+    "permissions": [
+        "tabs",
+        "scripting",
+        "storage"
+    ]
+  }

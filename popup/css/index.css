@@ -1,0 +1,50 @@
+html {
+    width: 400px;  /* max: 800px */
+    height: 600px; /* max: 600px */
+}
+
+.ew-navigation {
+    display: none;
+    opacity: 0;
+}
+
+.ew-navigation.ew-active {
+    display: block;
+    opacity: 0;
+}
+
+.modal span {
+    text-decoration: underline dotted 2px;
+}
+
+footer {
+    text-align: center;;
+}
+
+footer > small > a {
+    display: inline-block;
+    margin: 10px;
+    color: #adb5bd;
+    transition: color .5s;
+}
+
+footer > small > a:hover {
+    color: #e9ecef;
+    transition: color .5s;
+}
+
+footer > small > a::after {
+    content: "";
+    position: relative;
+    display: inline-flex;
+    background-color: #adb5bd;
+    width: 2px;
+    height: 30px;
+    top: 10px;
+    left: 10%;
+    pointer-events: none;
+}
+
+footer > small > a:last-child:after {
+    display: none;
+}
